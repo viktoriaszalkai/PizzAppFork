@@ -4,6 +4,24 @@ public class PizzApp extends javax.swing.JFrame {
 
     public PizzApp() {
         initComponents();
+        
+        int alapAr2 = 1750;
+        
+        double meretSzorzo = 1;
+        
+        int db = 1;
+        
+        int extra1 = 0;
+                
+        int extra2 = 0;
+        
+        int extra3 = 0;
+        
+        int extrak = extra1 + extra2 + extra3;
+                
+        double vegsoAr = alapAr2 * meretSzorzo + extrak;
+        vegsoAr *= db;  //vegsoAr = vegsoAr * db;
+        lblAr.setText(Double.toString(vegsoAr));
     }
 
     @SuppressWarnings("unchecked")
@@ -39,7 +57,7 @@ public class PizzApp extends javax.swing.JFrame {
         lblValaszthato.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblValaszthato.setText("Választható pizza:");
 
-        cmdValaszthatoPizzak.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---válasszon---", "Margherita", "Hawaii", "Songoku", "Diavola" }));
+        cmdValaszthatoPizzak.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Margherita", "Hawaii", "Songoku", "Diavola" }));
 
         pnlMeret.setBorder(javax.swing.BorderFactory.createTitledBorder("Méret"));
 
@@ -59,7 +77,7 @@ public class PizzApp extends javax.swing.JFrame {
                 .addGroup(pnlMeretLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rdbMeret25, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rdbMeret32, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlMeretLayout.setVerticalGroup(
             pnlMeretLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,7 +96,7 @@ public class PizzApp extends javax.swing.JFrame {
         lblFizFt.setText("Ft");
 
         lblAr.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblAr.setText("1750");
+        lblAr.setText("0");
 
         numDb.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
 
@@ -164,7 +182,7 @@ public class PizzApp extends javax.swing.JFrame {
                     .addComponent(cmdValaszthatoPizzak, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlMeret, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRendel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlFizetendo, javax.swing.GroupLayout.PREFERRED_SIZE, 122, Short.MAX_VALUE))
+                    .addComponent(pnlFizetendo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
