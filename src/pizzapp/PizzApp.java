@@ -26,9 +26,7 @@ public class PizzApp extends javax.swing.JFrame {
         
         extrak = extra1 + extra2 + extra3;
                 
-        vegsoAr = alapAr * meretSzorzo + extrak;
-        vegsoAr *= db;  //vegsoAr = vegsoAr * db;
-        lblAr.setText(Double.toString(vegsoAr));
+        szamolasEsIras();
     }
 
     @SuppressWarnings("unchecked")
@@ -272,30 +270,34 @@ public class PizzApp extends javax.swing.JFrame {
                     
         //else if  cmdValaszthatoPizzak.setSelectedIndex(2)
                   
-        int db = 1;
+        db = 1;
         
         int extra1 = 0;                
         int extra2 = 0;       
         int extra3 = 0;        
-        int extrak = extra1 + extra2 + extra3;
+        extrak = extra1 + extra2 + extra3;
                 
-        double vegsoAr = alapAr * meretSzorzo + extrak;
-        vegsoAr *= db;  //vegsoAr = vegsoAr * db;
-        lblAr.setText(Double.toString(vegsoAr));
+        szamolasEsIras();
     }//GEN-LAST:event_cmdValaszthatoPizzakActionPerformed
 
     private void rdbMeret25ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdbMeret25ItemStateChanged
        meretSzorzo = .75;
        
-       vegsoAr = alapAr * meretSzorzo + extrak;
-       vegsoAr *= db;  //vegsoAr = vegsoAr * db;
-       lblAr.setText(Double.toString(vegsoAr));
+        szamolasEsIras();
+        //vegsoAr = vegsoAr * db;
     }//GEN-LAST:event_rdbMeret25ItemStateChanged
 
     private void rdbMeret32ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdbMeret32ItemStateChanged
        meretSzorzo = 1;
+       szamolasEsIras();
     }//GEN-LAST:event_rdbMeret32ItemStateChanged
 
+     private void szamolasEsIras() {
+        vegsoAr = alapAr * meretSzorzo + extrak;
+        vegsoAr *= db;  //vegsoAr = vegsoAr * db;
+        lblAr.setText(Double.toString(vegsoAr));
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
