@@ -14,7 +14,10 @@ public class PizzApp extends javax.swing.JFrame {
     String tipus;
     String meret;
     String darab;
-    String extra;
+    String feltet1;
+    String feltet2;
+    String feltet3;
+    String feltetek;
     
     
             
@@ -28,13 +31,16 @@ public class PizzApp extends javax.swing.JFrame {
         
         db = 1;
         
-        extra1 = 0;
-                
-        extra2 = 0;
-        
+        extra1 = 0;                
+        extra2 = 0;        
         extra3 = 0;
         
         extrak = extra1 + extra2 + extra3;
+        
+        feltet1 ="";
+        feltet2 ="";
+        feltet3 ="";
+        
                 
         szamolasEsIras();
     }
@@ -216,6 +222,11 @@ public class PizzApp extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txaOsszesito);
 
         btnRendel.setText("Megrendelem");
+        btnRendel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRendelMouseClicked(evt);
+            }
+        });
 
         lblOsszesito.setText("Összestő:");
 
@@ -331,33 +342,36 @@ public class PizzApp extends javax.swing.JFrame {
     private void chbSajtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbSajtActionPerformed
     if (chbSajt.isSelected()){
         extra1 += 200;
+        feltet1 = "sajt, ";
     }else{
         extra1 -= 200;
+        feltet1 = "";
     }
-    extrak = extra1 + extra2 + extra3;
     szamolasEsIras();
-    txaOsszesito.setText("Plusz feltét: sajt");
     }//GEN-LAST:event_chbSajtActionPerformed
 
     private void chbHagymaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbHagymaActionPerformed
     if (chbHagyma.isSelected()){
         extra2 += 200;
+        feltet2 = "hagyma, ";
     }else{
         extra2 -= 200;
+        feltet2 = "";
     }
-    extrak = extra1 + extra2 + extra3;
-    szamolasEsIras();txaOsszesito.setText("Plusz feltét: sajt");
+    
+    szamolasEsIras();
     }//GEN-LAST:event_chbHagymaActionPerformed
 
     private void chbAnanaszActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbAnanaszActionPerformed
     if (chbAnanasz.isSelected()){
         extra3 += 200;
+        feltet3 = "ananász ";
     }else{
         extra3 -= 200;
+        feltet3 = "";
     }
-    extrak = extra1 + extra2 + extra3;
+    
     szamolasEsIras();
-    txaOsszesito.setText("Plusz feltét: ananász");
     }//GEN-LAST:event_chbAnanaszActionPerformed
 
     private void numDbStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_numDbStateChanged
@@ -379,17 +393,23 @@ public class PizzApp extends javax.swing.JFrame {
              darab = "5";
         }
         szamolasEsIras();
-        txaOsszesito.setText("Darabszám: "+(Integer.toString(dbSzam)));
+        darab = "Darabszám: "+(Integer.toString(dbSzam));
     }//GEN-LAST:event_numDbStateChanged
+
+    private void btnRendelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRendelMouseClicked
+        osszegzesKiirasa();
+    }//GEN-LAST:event_btnRendelMouseClicked
     private void osszegzesKiirasa(){
-        osszegzes = tipus+meret+darab+extra;
-        txaOsszesito.setText(tipus);
+        osszegzes = tipus +System.lineSeparator()+ meret +System.lineSeparator()+ darab +System.lineSeparator()+("Feltétek: ")+feltetek +System.lineSeparator()+("Végösszeg: ")+vegsoAr+("ft");
+        feltetek = feltet1 + feltet2 + feltet3;
+        txaOsszesito.setText(osszegzes);
     
     }
     
      private void szamolasEsIras() {
         vegsoAr = alapAr * meretSzorzo + extrak;
         vegsoAr *= db;  //vegsoAr = vegsoAr * db;
+        extrak = extra1 + extra2 + extra3;
         lblAr.setText(Double.toString(vegsoAr));
     }
     
