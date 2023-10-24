@@ -2,6 +2,8 @@ package pizzapp;
 
 public class PizzApp extends javax.swing.JFrame {
 
+    double meretSzorzo = 1;
+    
     public PizzApp() {
         initComponents();
         
@@ -68,10 +70,20 @@ public class PizzApp extends javax.swing.JFrame {
 
         buttonGroup1.add(rdbMeret25);
         rdbMeret25.setText("25 cm");
+        rdbMeret25.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                rdbMeret25ItemStateChanged(evt);
+            }
+        });
 
         buttonGroup1.add(rdbMeret32);
         rdbMeret32.setSelected(true);
         rdbMeret32.setText("32 cm");
+        rdbMeret32.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                rdbMeret32ItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlMeretLayout = new javax.swing.GroupLayout(pnlMeret);
         pnlMeret.setLayout(pnlMeretLayout);
@@ -237,8 +249,49 @@ public class PizzApp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdValaszthatoPizzakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdValaszthatoPizzakActionPerformed
-
+        //melyik a választott pizza indexe
+        int pizzaIndex = cmdValaszthatoPizzak.getSelectedIndex();
+        //választott pizza ára
+        int alapAr = -1;
+        
+        if(pizzaIndex == 0){
+            alapAr = 1580;
+        }else if(pizzaIndex == 1){
+            alapAr = 1680;
+        }else if(pizzaIndex == 2){
+            alapAr = 1750;
+        }else if(pizzaIndex == 3){
+            alapAr = 2100;
+        }
+        
+        
+        
+        //if cmdValaszthatoPizzak.setSelectedIndex(1)
+                    
+        //else if  cmdValaszthatoPizzak.setSelectedIndex(2)
+                  
+        int db = 1;
+        
+        int extra1 = 0;
+                
+        int extra2 = 0;
+        
+        int extra3 = 0;
+        
+        int extrak = extra1 + extra2 + extra3;
+                
+        double vegsoAr = alapAr * meretSzorzo + extrak;
+        vegsoAr *= db;  //vegsoAr = vegsoAr * db;
+        lblAr.setText(Double.toString(vegsoAr));
     }//GEN-LAST:event_cmdValaszthatoPizzakActionPerformed
+
+    private void rdbMeret25ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdbMeret25ItemStateChanged
+       meretSzorzo = .75;
+    }//GEN-LAST:event_rdbMeret25ItemStateChanged
+
+    private void rdbMeret32ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdbMeret32ItemStateChanged
+       meretSzorzo = 1;
+    }//GEN-LAST:event_rdbMeret32ItemStateChanged
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
