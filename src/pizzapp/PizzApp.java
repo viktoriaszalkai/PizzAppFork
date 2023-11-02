@@ -25,7 +25,7 @@ public class PizzApp extends javax.swing.JFrame {
     public PizzApp() {
         initComponents();
         
-        alapAr = 1750;
+        alapAr = 1580;
         
         meretSzorzo = 1;
         
@@ -299,29 +299,21 @@ public class PizzApp extends javax.swing.JFrame {
                 
         if(pizzaIndex == 0){
             alapAr = 1580;
-            tipus ="Pizza féle: Margaritha";
+            tipus ="Margaritha";
         }else if(pizzaIndex == 1){
             alapAr = 1680;
-            tipus ="Pizza féle: Hawaii";
+            tipus ="Hawaii";
         }else if(pizzaIndex == 2){
             alapAr = 1750;
-            tipus ="Pizza féle: Songoku";
+            tipus ="Songoku";
         }else if(pizzaIndex == 3){
             alapAr = 2100;
-            tipus = "Pizza féle: Diavola";
+            tipus = "Diavola";
         }
 
         //if cmdValaszthatoPizzak.setSelectedIndex(1)
                     
-        //else if  cmdValaszthatoPizzak.setSelectedIndex(2)
-                  
-        db = 1;
-        
-        int extra1 = 0;                
-        int extra2 = 0;       
-        int extra3 = 0;        
-        extrak = extra1 + extra2 + extra3;
-                
+        //else if  cmdValaszthatoPizzak.setSelectedIndex(2)                
         szamolasEsIras();
     }//GEN-LAST:event_cmdValaszthatoPizzakActionPerformed
 
@@ -330,19 +322,19 @@ public class PizzApp extends javax.swing.JFrame {
        
         szamolasEsIras();
         //vegsoAr = vegsoAr * db;
-        meret = "Méret: 25cm-es";
+        meret = "25cm";
     }//GEN-LAST:event_rdbMeret25ItemStateChanged
 
     private void rdbMeret32ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdbMeret32ItemStateChanged
        meretSzorzo = 1;
        szamolasEsIras();
-       meret ="Méret: 32cm-es";
+       meret ="32cm";
     }//GEN-LAST:event_rdbMeret32ItemStateChanged
 
     private void chbSajtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbSajtActionPerformed
-    if (chbSajt.isSelected()){
+     if (chbSajt.isSelected()){
         extra1 += 200;
-        feltet1 = "sajt, ";
+        feltet1 = "sajt ";
     }else{
         extra1 -= 200;
         feltet1 = "";
@@ -353,7 +345,7 @@ public class PizzApp extends javax.swing.JFrame {
     private void chbHagymaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbHagymaActionPerformed
     if (chbHagyma.isSelected()){
         extra2 += 200;
-        feltet2 = "hagyma, ";
+        feltet2 = " hagyma ";
     }else{
         extra2 -= 200;
         feltet2 = "";
@@ -365,7 +357,7 @@ public class PizzApp extends javax.swing.JFrame {
     private void chbAnanaszActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbAnanaszActionPerformed
     if (chbAnanasz.isSelected()){
         extra3 += 200;
-        feltet3 = "ananász ";
+        feltet3 = "ananász";
     }else{
         extra3 -= 200;
         feltet3 = "";
@@ -393,23 +385,23 @@ public class PizzApp extends javax.swing.JFrame {
              darab = "5";
         }
         szamolasEsIras();
-        darab = "Darabszám: "+(Integer.toString(dbSzam));
+        darab = (Integer.toString(dbSzam));
     }//GEN-LAST:event_numDbStateChanged
 
     private void btnRendelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRendelMouseClicked
         osszegzesKiirasa();
     }//GEN-LAST:event_btnRendelMouseClicked
     private void osszegzesKiirasa(){
-        osszegzes = tipus +System.lineSeparator()+ meret +System.lineSeparator()+ darab +System.lineSeparator()+("Feltétek: ")+feltetek +System.lineSeparator()+("Végösszeg: ")+vegsoAr+("ft");
+        osszegzes = "A választott pizza: "+tipus+"("+darab+"db)"+System.lineSeparator()+"Mérete: "+meret  +System.lineSeparator()+("Feltétek: ")+feltetek +System.lineSeparator()+("Végösszeg: ")+vegsoAr+("ft");
         feltetek = feltet1 + feltet2 + feltet3;
         txaOsszesito.setText(osszegzes);
     
     }
     
      private void szamolasEsIras() {
-        vegsoAr = alapAr * meretSzorzo + extrak;
+        vegsoAr = alapAr * meretSzorzo + extra1 + extra2 + extra3;
         vegsoAr *= db;  //vegsoAr = vegsoAr * db;
-        extrak = extra1 + extra2 + extra3;
+        //extrak = extra1 + extra2 + extra3;
         lblAr.setText(Double.toString(vegsoAr));
     }
     
